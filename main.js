@@ -33,35 +33,59 @@ function ajax(){
             document.getElementById("print").innerHTML =output;
             //comment
             
-            var promise= new Promise(function(resolve,reject){
-              var counter=0;
-              $(".checkbox").change(function(){
+//             var promise= new Promise(function(resolve,reject){
+//               var counter=0;
+//               $(".checkbox").change(function(){
                 
-                if($(this).prop("checked",true)){
-                  counter=counter+1;
-                  console.log(counter);
+//                 if($(this).prop("checked",true)){
+//                   counter=counter+1;
+//                   console.log(counter);
                   
                     
-                  if(counter==5)
-                  {
-                   // console.log("Done");
-                   resolve("Done");
+//                   if(counter==5)
+//                   {
+                   
+//                    resolve("Done");
                   
-                  }
+//                   }
                   
-                }
+//                 }
                 
-                else{
+//                 else{
                   
-                //reject( counter=counter-1);
-                  counter=counter-1;
-                  console.log(counter);
-                }
-              });
+                
+//                   counter=counter-1;
+//                   console.log(counter);
+//                 }
+//               });
            
-            });
-promise.then(function(s)
-{alert(s);})
+//             });
+// promise.then(function(s)
+// {alert(s);});
+
+
+
+ let promise = new Promise((resolve,reject)=>{
+   var counter=0;
+   $('.checkbox').change((e)=>{
+     var bool=e.target;
+     console.log(bool);
+     if(bool.checked==true){
+       counter=counter+1;
+       console.log(counter);
+       if(counter==5){
+         resolve("Congratulations..!! You have selected five tasks.");
+       }
+     }
+     else{
+     counter=counter-1;
+     console.log(counter);
+    }
+   })
+ });
+ promise.then((e)=>{
+   alert(e);
+ })
 
             //comment
             }
